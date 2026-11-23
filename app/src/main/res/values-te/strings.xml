@@ -1,0 +1,158 @@
+<resources>
+    <string name="app_name">ఖ్యాతి (KYAATHI)</string>
+
+    <!-- Brand & Language -->
+    <string name="brand_tagline">స్మార్ట్ డెలివరీ చిరునామా పుస్తకం</string>
+    <string name="lang_english">EN</string>
+    <string name="lang_telugu">తెలుగు</string>
+    <string name="language_label">యాప్ భాష</string>
+    <string name="language_subtitle">ఇంగ్లీష్ మరియు తెలుగు మధ్య వెంటనే మార్చుకోండి</string>
+
+    <!-- Auth & Login -->
+    <string name="auth_welcome_title">KYAATHI కి స్వాగతం</string>
+    <string name="auth_welcome_subtitle">కస్టమర్ చిరునామాలను సురక్షితంగా సేవ్ చేయండి, సెకన్లలో వెతకండి మరియు Google Maps తో నావిగేట్ చేయండి.</string>
+    <string name="auth_mode_rider">డెలివరీ పార్ట్నర్</string>
+    <string name="auth_mode_admin">అడ్మిన్ కన్సోల్</string>
+    <string name="auth_tab_google">Google ఖాతా</string>
+    <string name="auth_tab_mobile">మొబైల్ OTP</string>
+    <string name="auth_google_button">Google తో కొనసాగండి</string>
+    <string name="auth_admin_google_button">Google తో అడ్మిన్ లాగిన్</string>
+    <string name="auth_mobile_label">మొబైల్ నంబర్</string>
+    <string name="auth_mobile_hint">+91 98765 43210</string>
+    <string name="auth_send_otp">OTP పంపండి</string>
+    <string name="auth_otp_label">6-అంకెల OTP కోడ్</string>
+    <string name="auth_verify_otp">ధృవీకరించి లాగిన్ అవ్వండి</string>
+    <string name="auth_change_number">నంబర్ మార్చండి</string>
+    <string name="auth_otp_sent">%1$s కు ధృవీకరణ కోడ్ పంపబడింది</string>
+    <string name="auth_privacy_note">మీరు సేవ్ చేసిన కస్టమర్ చిరునామాలు మీ ఖాతాకు మాత్రమే పరిమితం మరియు ఇతర రైడర్లతో పంచుకోబడవు.</string>
+    <string name="auth_admin_note">ధృవీకరించబడిన KYAATHI నిర్వాహకులకు మాత్రమే రక్షిత మార్గం. అన్ని అడ్మిన్ అనుమతులు Firebase లో ధృవీకరించబడతాయి.</string>
+    <string name="auth_admin_back_to_rider">డెలివరీ పార్ట్నర్ లాగిన్‌కు తిరిగి వెళ్ళండి</string>
+    <string name="auth_error_invalid_phone">సరైన 10-అంకెల మొబైల్ నంబర్ నమోదు చేయండి (ఉదా. +919876543210).</string>
+    <string name="auth_error_invalid_otp">6-అంకెల OTP కోడ్ నమోదు చేయండి.</string>
+    <string name="auth_error_firebase_unconfigured">Firebase ప్రామాణీకరణ సెటప్ కాలేదు. డెమో కోసం TEST MODE ఉపయోగించండి.</string>
+    <string name="auth_error_oauth_missing">Google OAuth కాన్ఫిగరేషన్ లోపించింది. Firebase సెటప్ తనిఖీ చేయండి లేదా TEST MODE ఉపయోగించండి.</string>
+    <string name="auth_error_no_google_account">ఈ డివైజ్‌లో Google ఖాతా లేదు లేదా SHA-1 రిజిస్టర్ కాలేదు. Settings లో ఖాతా జోడించండి లేదా TEST MODE ఉపయోగించండి.</string>
+    <string name="auth_error_play_services_unavailable">ఈ డివైజ్‌లో Google Play Services అందుబాటులో లేదు. మొబైల్ OTP లేదా TEST MODE ఉపయోగించండి.</string>
+    <string name="auth_google_cancelled">Google లాగిన్ రద్దు చేయబడింది. మళ్లీ ప్రయత్నించండి లేదా TEST MODE ఉపయోగించండి.</string>
+    <string name="auth_firebase_warning_banner">Firebase / Google OAuth సెటప్ పూర్తి కాలేదు. ప్రివ్యూ కోసం TEST MODE ఉపయోగించండి.</string>
+    <string name="auth_admin_denied_title">అడ్మిన్ అనుమతి అవసరం</string>
+    <string name="auth_admin_denied_msg">ఈ ఖాతా (%1$s) కు ధృవీకరించబడిన Firebase అడ్మిన్ అనుమతులు లేవు. డెలివరీ పార్ట్నర్ మోడ్‌కు తిరిగి వెళ్లండి లేదా లాగ్ అవుట్ చేయండి.</string>
+
+    <!-- Development Test Mode -->
+    <string name="test_mode_title">TEST MODE (డెవలప్‌మెంట్)</string>
+    <string name="test_mode_subtitle">Google లేదా OTP లేకుండా డెమో డెలివరీ పార్ట్నర్‌గా ప్రవేశించండి. డెమో చిరునామాలు తాత్కాలికమైనవి, Firebase లో సేవ్ కావు.</string>
+    <string name="test_mode_button">TEST MODE లో ప్రవేశించండి (డెమో)</string>
+    <string name="test_mode_banner">TEST MODE · తాత్కాలిక డెమో డేటా (Firebase లో సేవ్ కాదు)</string>
+    <string name="test_mode_badge">తాత్కాలిక డెమో డేటా</string>
+    <string name="test_mode_exit">నిష్క్రమించండి</string>
+    <string name="test_mode_logout_message">TEST MODE నుండి నిష్క్రమించినప్పుడు తాత్కాలిక డెమో మార్పులు రీసెట్ చేయబడతాయి.</string>
+
+    <!-- Rider Onboarding / Profile Setup -->
+    <string name="onboarding_title">రైడర్ ప్రొఫైల్ పూర్తి చేయండి</string>
+    <string name="onboarding_subtitle">కస్టమర్ చిరునామాలను సేవ్ చేయడానికి మీ వ్యక్తిగత డెలివరీ పార్ట్నర్ ఖాతాను సెటప్ చేయండి.</string>
+    <string name="field_full_name">పూర్తి పేరు</string>
+    <string name="field_mobile_number">మొబైల్ నంబర్</string>
+    <string name="field_vehicle_type">వాహన రకం</string>
+    <string name="field_delivery_zone">ప్రాథమిక డెలివరీ ప్రాంతం / జోన్</string>
+    <string name="btn_save_profile">సేవ్ చేసి కొనసాగండి</string>
+    <string name="vehicle_bike">బైక్</string>
+    <string name="vehicle_scooter">స్కూటర్</string>
+    <string name="vehicle_van">వ్యాన్</string>
+    <string name="vehicle_cycle">సైకిల్</string>
+    <string name="vehicle_other">ఇతర</string>
+
+    <!-- Suspended State -->
+    <string name="suspended_title">ఖాతా నిలిపివేయబడింది</string>
+    <string name="suspended_message">మీ డెలివరీ పార్ట్నర్ ఖాతా అడ్మిన్ ద్వారా తాత్కాలికంగా నిలిపివేయబడింది. దయచేసి మీ హబ్ మేనేజర్‌ను సంప్రదించండి.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">హోమ్</string>
+    <string name="nav_addresses">చిరునామాలు</string>
+    <string name="nav_profile">ప్రొఫైల్</string>
+
+    <!-- Home Dashboard -->
+    <string name="greeting_rider">నమస్కారం, %1$s</string>
+    <string name="rider_badge_active">యాక్టివ్ పార్ట్నర్</string>
+    <string name="total_customers_label">మొత్తం సేవ్ చేసిన కస్టమర్లు</string>
+    <string name="recent_saves_label">ఇటీవల సేవ్ చేసిన చిరునామాలు</string>
+    <string name="add_new_address">కొత్త చిరునామా జోడించండి</string>
+    <string name="search_placeholder">కస్టమర్ పేరు లేదా మొబైల్ నంబర్‌తో వెతకండి…</string>
+    <string name="view_all">అన్నీ చూడండి</string>
+    <string name="no_addresses_title">ఇంకా కస్టమర్ చిరునామాలు లేవు</string>
+    <string name="no_addresses_subtitle">ఒక్క ట్యాప్‌తో Google Maps నావిగేషన్ కోసం కస్టమర్ చిరునామాలు, ల్యాండ్‌మార్క్‌లు మరియు గమనికలను సేవ్ చేయండి.</string>
+    <string name="no_search_results">\"%1$s\" కోసం సరిపోయే కస్టమర్లు కనుగొనబడలేదు.</string>
+    <string name="clear_search">క్లియర్</string>
+
+    <!-- Address Form -->
+    <string name="title_add_address">కస్టమర్ చిరునామా జోడించండి</string>
+    <string name="title_edit_address">కస్టమర్ చిరునామా సవరించండి</string>
+    <string name="field_customer_name">కస్టమర్ పేరు *</string>
+    <string name="field_customer_mobile">కస్టమర్ మొబైల్ నంబర్ *</string>
+    <string name="field_full_address">పూర్తి చిరునామా (ఇల్లు / ఫ్లాట్ / వీధి) *</string>
+    <string name="field_area">ప్రాంతం / కాలనీ *</string>
+    <string name="field_landmark">సమీప ల్యాండ్‌మార్క్</string>
+    <string name="field_delivery_notes">అదనపు డెలివరీ గమనికలు</string>
+    <string name="btn_pin_gps">ప్రస్తుత GPS లోకేషన్ జతచేయండి</string>
+    <string name="gps_pinned">GPS లోకేషన్ జతచేయబడింది: %1$.4f, %2$.4f</string>
+    <string name="gps_permission_denied">లోకేషన్ అనుమతి నిరాకరించబడింది. మీరు చిరునామాను మాన్యువల్‌గా సేవ్ చేయవచ్చు.</string>
+    <string name="btn_save_address">చిరునామా సేవ్ చేయండి</string>
+    <string name="btn_update_address">చిరునామా అప్‌డేట్ చేయండి</string>
+    <string name="validation_name">కస్టమర్ పేరు కనీసం 2 అక్షరాలు ఉండాలి.</string>
+    <string name="validation_mobile">మొబైల్ నంబర్ 8–20 అక్షరాలు ఉండాలి.</string>
+    <string name="validation_address">పూర్తి చిరునామా కనీసం 5 అక్షరాలు ఉండాలి.</string>
+    <string name="validation_area">ప్రాంతం కనీసం 2 అక్షరాలు ఉండాలి.</string>
+
+    <!-- Address Detail & Actions -->
+    <string name="title_address_detail">కస్టమర్ వివరాలు</string>
+    <string name="btn_navigate">నావిగేట్</string>
+    <string name="btn_open_maps">Maps లో తెరవండి</string>
+    <string name="btn_call">కాల్</string>
+    <string name="btn_edit">సవరించండి</string>
+    <string name="btn_delete">తొలగించండి</string>
+    <string name="delete_confirm_title">చిరునామాను తొలగించాలా?</string>
+    <string name="delete_confirm_message">మీ ప్రైవేట్ చిరునామా పుస్తకం నుండి %1$s ను తొలగించాలా? దీనిని తిరిగి పొందలేము.</string>
+    <string name="btn_cancel">రద్దు</string>
+    <string name="btn_confirm">నిర్ధారించండి</string>
+    <string name="maps_not_found">Google Maps లేదా బ్రౌజర్‌ను తెరవడం సాధ్యం కాలేదు.</string>
+    <string name="private_lock_badge">మీ ఖాతాకు మాత్రమే ప్రైవేట్</string>
+
+    <!-- AdMob Banner & Rewarded -->
+    <string name="ad_label">ప్రకటన</string>
+    <string name="rewarded_card_title">రూట్ బూస్ట్ &amp; డెలివరీ చిట్కా</string>
+    <string name="rewarded_card_subtitle">నేటి డెలివరీ బోనస్‌ను అన్‌లాక్ చేయడానికి మరియు KYAATHI కి మద్దతు ఇవ్వడానికి చిన్న ప్రకటన చూడండి.</string>
+    <string name="btn_watch_rewarded">రివార్డ్ ప్రకటన చూడండి</string>
+    <string name="reward_earned_msg">బోనస్ అన్‌లాక్ అయింది! +%1$d %2$s లభించింది.</string>
+    <string name="ad_loading_msg">ప్రకటన లోడ్ అవుతోంది…</string>
+    <string name="ad_unavailable_msg">ప్రస్తుతం ప్రకటన సిద్ధంగా లేదు. కొద్దిసేపట్లో మళ్లీ ప్రయత్నించండి.</string>
+
+    <!-- Profile & Logout -->
+    <string name="profile_title">పార్ట్నర్ ప్రొఫైల్</string>
+    <string name="btn_edit_profile">ప్రొఫైల్ అప్‌డేట్ చేయండి</string>
+    <string name="btn_logout">లాగ్ అవుట్</string>
+    <string name="logout_confirm_title">KYAATHI నుండి లాగ్ అవుట్ అవ్వాలా?</string>
+    <string name="logout_confirm_message">మీరు సేవ్ చేసిన చిరునామాలు మీ ప్రైవేట్ క్లౌడ్ ఖాతాలో సురక్షితంగా ఉంటాయి.</string>
+    <string name="profile_saved_toast">ప్రొఫైల్ విజయవంతంగా అప్‌డేట్ చేయబడింది</string>
+
+    <!-- Admin Dashboard -->
+    <string name="admin_title">KYAATHI అడ్మిన్</string>
+    <string name="admin_subtitle">డెలివరీ పార్ట్నర్ల నిర్వహణ &amp; గణాంకాలు</string>
+    <string name="admin_stat_total_riders">మొత్తం రైడర్లు</string>
+    <string name="admin_stat_active_riders">యాక్టివ్ రైడర్లు</string>
+    <string name="admin_stat_suspended_riders">నిలిపివేసినవి</string>
+    <string name="admin_stat_total_addresses">సేవ్ చేసిన కస్టమర్లు</string>
+    <string name="admin_tab_riders">డెలివరీ బాయ్స్</string>
+    <string name="admin_tab_ads">AdMob సెటప్</string>
+    <string name="admin_no_riders">ఇంకా డెలివరీ పార్ట్నర్లు నమోదు కాలేదు.</string>
+    <string name="admin_status_active">యాక్టివ్</string>
+    <string name="admin_status_suspended">సస్పెండ్</string>
+    <string name="admin_action_suspend">సస్పెండ్ చేయండి</string>
+    <string name="admin_action_activate">యాక్టివేట్ చేయండి</string>
+    <string name="admin_action_remove">తొలగించండి</string>
+    <string name="admin_admob_title">Google AdMob సెట్టింగ్స్</string>
+    <string name="admin_admob_subtitle">అభివృద్ధి సమయంలో టెస్ట్ ID లను ఉపయోగించండి లేదా మీ లైవ్ AdMob యూనిట్ ID లకు మార్చండి.</string>
+    <string name="admin_use_test_ads">డెవలప్‌మెంట్ టెస్ట్ ప్రకటన ID లు ఉపయోగించండి</string>
+    <string name="admin_banner_id_label">ప్రొడక్షన్ బ్యానర్ Ad యూనిట్ ID</string>
+    <string name="admin_rewarded_id_label">ప్రొడక్షన్ రివార్డ్ Ad యూనిట్ ID</string>
+    <string name="admin_save_admob">AdMob సెట్టింగ్స్ సేవ్ చేయండి</string>
+    <string name="admin_admob_saved">AdMob సెట్టింగ్స్ సేవ్ చేయబడ్డాయి</string>
+</resources>

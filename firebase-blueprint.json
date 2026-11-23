@@ -1,0 +1,205 @@
+{
+  "entities": {
+    "AdminRecord": {
+      "title": "AdminRecord",
+      "description": "Authorized administrator record for KYAATHI admin dashboard access.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Verified Google email of the administrator"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Display name of the administrator"
+        },
+        "grantedBy": {
+          "type": "string",
+          "description": "UID of the admin who granted access"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when admin access was granted (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": ["email", "displayName", "grantedBy", "createdAt"]
+    },
+    "DeliveryBoyProfile": {
+      "title": "DeliveryBoyProfile",
+      "description": "Individual delivery partner profile and account status.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the delivery partner"
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Full name of the delivery partner"
+        },
+        "mobileNumber": {
+          "type": "string",
+          "description": "Primary mobile number of the delivery partner"
+        },
+        "email": {
+          "type": "string",
+          "description": "Optional email address from Google account"
+        },
+        "vehicleType": {
+          "type": "string",
+          "enum": ["Bike", "Scooter", "Van", "Cycle", "Other"],
+          "description": "Delivery vehicle type"
+        },
+        "zone": {
+          "type": "string",
+          "description": "Optional primary delivery area or hub"
+        },
+        "accountStatus": {
+          "type": "string",
+          "enum": ["active", "suspended"],
+          "description": "Account state managed by administrators"
+        },
+        "savedAddressCount": {
+          "type": "integer",
+          "description": "Count of customer addresses saved by this delivery partner"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when registered (FieldValue.serverTimestamp())"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "userId",
+        "fullName",
+        "mobileNumber",
+        "vehicleType",
+        "accountStatus",
+        "savedAddressCount",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "CustomerAddress": {
+      "title": "CustomerAddress",
+      "description": "Private customer delivery address owned exclusively by a single delivery partner.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner delivery partner UID"
+        },
+        "customerName": {
+          "type": "string",
+          "description": "Customer full name"
+        },
+        "mobileNumber": {
+          "type": "string",
+          "description": "Customer mobile phone number"
+        },
+        "fullAddress": {
+          "type": "string",
+          "description": "Complete street/house/building address"
+        },
+        "area": {
+          "type": "string",
+          "description": "Locality, colony, or delivery area"
+        },
+        "landmark": {
+          "type": "string",
+          "description": "Optional nearby landmark"
+        },
+        "deliveryNotes": {
+          "type": "string",
+          "description": "Optional delivery instructions or gate notes"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Optional GPS latitude"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Optional GPS longitude"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when saved (FieldValue.serverTimestamp())"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when updated (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "userId",
+        "customerName",
+        "mobileNumber",
+        "fullAddress",
+        "area",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AdMobConfig": {
+      "title": "AdMobConfig",
+      "description": "Owner-managed Google AdMob configuration (test vs production IDs).",
+      "type": "object",
+      "properties": {
+        "useTestAds": {
+          "type": "boolean",
+          "description": "Whether the app should use Google AdMob test unit IDs"
+        },
+        "bannerAdUnitId": {
+          "type": "string",
+          "description": "Production AdMob Banner Ad Unit ID"
+        },
+        "rewardedAdUnitId": {
+          "type": "string",
+          "description": "Production AdMob Rewarded Ad Unit ID"
+        },
+        "updatedBy": {
+          "type": "string",
+          "description": "Admin UID who updated the configuration"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when updated (FieldValue.serverTimestamp())"
+        }
+      },
+      "required": [
+        "useTestAds",
+        "bannerAdUnitId",
+        "rewardedAdUnitId",
+        "updatedBy",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/admins/{adminUid}": {
+      "schema": { "$ref": "#/entities/AdminRecord" },
+      "description": "Authorized admin accounts"
+    },
+    "/delivery_boys/{userId}": {
+      "schema": { "$ref": "#/entities/DeliveryBoyProfile" },
+      "description": "Individual delivery partner profiles"
+    },
+    "/delivery_boys/{userId}/addresses/{addressId}": {
+      "schema": { "$ref": "#/entities/CustomerAddress" },
+      "description": "Strictly private customer addresses scoped per delivery partner"
+    },
+    "/app_config/{configId}": {
+      "schema": { "$ref": "#/entities/AdMobConfig" },
+      "description": "Application-wide configuration such as AdMob unit IDs"
+    }
+  }
+}

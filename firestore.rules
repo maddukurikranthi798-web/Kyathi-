@@ -1,0 +1,165 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        ('admin' in request.auth.token && request.auth.token.admin == true) ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    function isActiveDeliveryBoy(userId) {
+      return exists(/databases/$(database)/documents/delivery_boys/$(userId)) &&
+             get(/databases/$(database)/documents/delivery_boys/$(userId)).data.accountStatus == 'active';
+    }
+
+    function isValidAdminRecord(data) {
+      return data.email is string && data.email.size() >= 3 && data.email.size() <= 120 &&
+             data.displayName is string && data.displayName.size() >= 1 && data.displayName.size() <= 80 &&
+             data.grantedBy is string && data.grantedBy.size() >= 1 && data.grantedBy.size() <= 128 &&
+             data.createdAt is timestamp && data.createdAt <= request.time;
+    }
+
+    function isValidDeliveryBoy(data) {
+      return data.userId is string && data.userId.size() >= 1 && data.userId.size() <= 128 &&
+             data.fullName is string && data.fullName.size() >= 2 && data.fullName.size() <= 80 &&
+             data.mobileNumber is string && data.mobileNumber.size() >= 8 && data.mobileNumber.size() <= 20 &&
+             (!('email' in data) || data.email == null || (data.email is string && data.email.size() <= 120)) &&
+             data.vehicleType in ['Bike', 'Scooter', 'Van', 'Cycle', 'Other'] &&
+             (!('zone' in data) || data.zone == null || (data.zone is string && data.zone.size() <= 80)) &&
+             data.accountStatus in ['active', 'suspended'] &&
+             data.savedAddressCount is int && data.savedAddressCount >= 0 && data.savedAddressCount <= 100000 &&
+             data.createdAt is timestamp && data.createdAt <= request.time &&
+             data.updatedAt is timestamp && data.updatedAt <= request.time;
+    }
+
+    function isValidCustomerAddress(data) {
+      return data.userId is string && data.userId.size() >= 1 && data.userId.size() <= 128 &&
+             data.customerName is string && data.customerName.size() >= 2 && data.customerName.size() <= 100 &&
+             data.mobileNumber is string && data.mobileNumber.size() >= 8 && data.mobileNumber.size() <= 20 &&
+             data.fullAddress is string && data.fullAddress.size() >= 5 && data.fullAddress.size() <= 300 &&
+             data.area is string && data.area.size() >= 2 && data.area.size() <= 100 &&
+             (!('landmark' in data) || data.landmark == null || (data.landmark is string && data.landmark.size() <= 150)) &&
+             (!('deliveryNotes' in data) || data.deliveryNotes == null || (data.deliveryNotes is string && data.deliveryNotes.size() <= 300)) &&
+             (!('latitude' in data) || data.latitude == null || (data.latitude is number && data.latitude >= -90.0 && data.latitude <= 90.0)) &&
+             (!('longitude' in data) || data.longitude == null || (data.longitude is number && data.longitude >= -180.0 && data.longitude <= 180.0)) &&
+             data.createdAt is timestamp && data.createdAt <= request.time &&
+             data.updatedAt is timestamp && data.updatedAt <= request.time;
+    }
+
+    function isValidAdMobConfig(data) {
+      return data.useTestAds is bool &&
+             data.bannerAdUnitId is string && data.bannerAdUnitId.size() <= 100 &&
+             data.rewardedAdUnitId is string && data.rewardedAdUnitId.size() <= 100 &&
+             data.updatedBy is string && data.updatedBy.size() >= 1 && data.updatedBy.size() <= 128 &&
+             data.updatedAt is timestamp && data.updatedAt <= request.time;
+    }
+
+    match /admins/{adminUid} {
+      allow get: if isSignedIn() && isValidId(adminUid) && (request.auth.uid == adminUid || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isSignedIn() &&
+                       isValidId(adminUid) &&
+                       isAdmin() &&
+                       incoming().grantedBy == request.auth.uid &&
+                       incoming().keys().hasAll(['email', 'displayName', 'grantedBy', 'createdAt']) &&
+                       incoming().keys().hasOnly(['email', 'displayName', 'grantedBy', 'createdAt']) &&
+                       isValidAdminRecord(incoming());
+      allow update: if false;
+      allow delete: if isSignedIn() && isValidId(adminUid) && isAdmin() && adminUid != request.auth.uid;
+    }
+
+    match /delivery_boys/{userId} {
+      allow get: if isSignedIn() && isValidId(userId) && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isSignedIn() &&
+                       isValidId(userId) &&
+                       request.auth.uid == userId &&
+                       incoming().userId == request.auth.uid &&
+                       incoming().accountStatus == 'active' &&
+                       incoming().savedAddressCount == 0 &&
+                       incoming().keys().hasAll(['userId', 'fullName', 'mobileNumber', 'vehicleType', 'accountStatus', 'savedAddressCount', 'createdAt', 'updatedAt']) &&
+                       incoming().keys().hasOnly(['userId', 'fullName', 'mobileNumber', 'email', 'vehicleType', 'zone', 'accountStatus', 'savedAddressCount', 'createdAt', 'updatedAt']) &&
+                       isValidDeliveryBoy(incoming());
+      allow update: if isSignedIn() &&
+                       isValidId(userId) &&
+                       isValidDeliveryBoy(incoming()) &&
+                       incoming().userId == existing().userId &&
+                       incoming().createdAt == existing().createdAt &&
+                       (
+                         (request.auth.uid == userId &&
+                          incoming().accountStatus == existing().accountStatus &&
+                          incoming().diff(existing()).affectedKeys().hasOnly(['fullName', 'mobileNumber', 'email', 'vehicleType', 'zone', 'savedAddressCount', 'updatedAt'])) ||
+                         (isAdmin() &&
+                          incoming().diff(existing()).affectedKeys().hasOnly(['accountStatus', 'zone', 'updatedAt']))
+                       );
+      allow delete: if isSignedIn() && isValidId(userId) && isAdmin();
+
+      match /addresses/{addressId} {
+        allow get: if isSignedIn() && isValidId(userId) && isValidId(addressId) && request.auth.uid == userId;
+        allow list: if isSignedIn() && isValidId(userId) && request.auth.uid == userId;
+        allow create: if isSignedIn() &&
+                         isValidId(userId) &&
+                         isValidId(addressId) &&
+                         request.auth.uid == userId &&
+                         incoming().userId == request.auth.uid &&
+                         incoming().keys().hasAll(['userId', 'customerName', 'mobileNumber', 'fullAddress', 'area', 'createdAt', 'updatedAt']) &&
+                         incoming().keys().hasOnly(['userId', 'customerName', 'mobileNumber', 'fullAddress', 'area', 'landmark', 'deliveryNotes', 'latitude', 'longitude', 'createdAt', 'updatedAt']) &&
+                         isValidCustomerAddress(incoming()) &&
+                         isActiveDeliveryBoy(userId);
+        allow update: if isSignedIn() &&
+                         isValidId(userId) &&
+                         isValidId(addressId) &&
+                         request.auth.uid == userId &&
+                         isValidCustomerAddress(incoming()) &&
+                         incoming().userId == existing().userId &&
+                         incoming().createdAt == existing().createdAt &&
+                         incoming().diff(existing()).affectedKeys().hasOnly(['customerName', 'mobileNumber', 'fullAddress', 'area', 'landmark', 'deliveryNotes', 'latitude', 'longitude', 'updatedAt']) &&
+                         isActiveDeliveryBoy(userId);
+        allow delete: if isSignedIn() && isValidId(userId) && isValidId(addressId) && request.auth.uid == userId;
+      }
+    }
+
+    match /app_config/{configId} {
+      allow get: if isSignedIn() && isValidId(configId) && configId == 'admob';
+      allow list: if false;
+      allow create: if isSignedIn() &&
+                       isValidId(configId) &&
+                       configId == 'admob' &&
+                       isAdmin() &&
+                       incoming().updatedBy == request.auth.uid &&
+                       incoming().keys().hasAll(['useTestAds', 'bannerAdUnitId', 'rewardedAdUnitId', 'updatedBy', 'updatedAt']) &&
+                       incoming().keys().hasOnly(['useTestAds', 'bannerAdUnitId', 'rewardedAdUnitId', 'updatedBy', 'updatedAt']) &&
+                       isValidAdMobConfig(incoming());
+      allow update: if isSignedIn() &&
+                       isValidId(configId) &&
+                       configId == 'admob' &&
+                       isAdmin() &&
+                       incoming().updatedBy == request.auth.uid &&
+                       incoming().diff(existing()).affectedKeys().hasOnly(['useTestAds', 'bannerAdUnitId', 'rewardedAdUnitId', 'updatedBy', 'updatedAt']) &&
+                       isValidAdMobConfig(incoming());
+      allow delete: if false;
+    }
+  }
+}

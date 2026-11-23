@@ -1,0 +1,6 @@
+{
+  "name": "KYAATHI",
+  "description": "Native Android delivery address book and route navigation app for KYAATHI delivery partners with secure Firestore isolation, Telugu & English support, AdMob integration, and admin dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

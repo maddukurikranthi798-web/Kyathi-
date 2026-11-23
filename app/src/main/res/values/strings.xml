@@ -1,0 +1,163 @@
+<resources>
+    <string name="app_name">KYAATHI</string>
+
+    <!-- Google AdMob Test IDs (Replace with production IDs or configure in Admin Dashboard) -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_banner_test_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_rewarded_test_id" translatable="false">ca-app-pub-3940256099942544/5224354917</string>
+
+    <!-- Brand & Language -->
+    <string name="brand_tagline">Smart Delivery Address Book</string>
+    <string name="lang_english">EN</string>
+    <string name="lang_telugu">తెలుగు</string>
+    <string name="language_label">App Language</string>
+    <string name="language_subtitle">Switch instantly between English and Telugu</string>
+
+    <!-- Auth & Login -->
+    <string name="auth_welcome_title">Welcome to KYAATHI</string>
+    <string name="auth_welcome_subtitle">Save customer addresses privately, search in seconds, and navigate with Google Maps.</string>
+    <string name="auth_mode_rider">Delivery Partner</string>
+    <string name="auth_mode_admin">Admin Console</string>
+    <string name="auth_tab_google">Google Account</string>
+    <string name="auth_tab_mobile">Mobile OTP</string>
+    <string name="auth_google_button">Continue with Google</string>
+    <string name="auth_admin_google_button">Sign in as Admin with Google</string>
+    <string name="auth_mobile_label">Mobile Number</string>
+    <string name="auth_mobile_hint">+91 98765 43210</string>
+    <string name="auth_send_otp">Send Verification OTP</string>
+    <string name="auth_otp_label">6-Digit OTP Code</string>
+    <string name="auth_verify_otp">Verify &amp; Sign In</string>
+    <string name="auth_change_number">Change Number</string>
+    <string name="auth_otp_sent">Verification code sent to %1$s</string>
+    <string name="auth_privacy_note">Your saved customer addresses are private to your account and never shared with other riders.</string>
+    <string name="auth_admin_note">Protected route for verified KYAATHI administrators only. Roles are verified strictly on Firebase.</string>
+    <string name="auth_admin_back_to_rider">Return to Delivery Partner Sign In</string>
+    <string name="auth_error_invalid_phone">Enter a valid 10-digit mobile number (e.g. +919876543210).</string>
+    <string name="auth_error_invalid_otp">Enter the 6-digit OTP code.</string>
+    <string name="auth_error_firebase_unconfigured">Firebase Authentication is not initialized. Real sign-in is unavailable until Firebase is configured—use TEST MODE below for preview.</string>
+    <string name="auth_error_oauth_missing">Google OAuth client configuration (default_web_client_id) is missing or incomplete. Check Firebase Console &amp; SHA-1 setup, or use TEST MODE below.</string>
+    <string name="auth_error_no_google_account">No Google account is signed in on this device/emulator, or app SHA-1 needs registration. Add a Google account in Settings or use TEST MODE below.</string>
+    <string name="auth_error_play_services_unavailable">Google Play Services Credential Manager is unavailable on this device. Use Mobile OTP or TEST MODE.</string>
+    <string name="auth_google_cancelled">Google Sign-In was cancelled. Tap Continue with Google to retry, or use TEST MODE.</string>
+    <string name="auth_firebase_warning_banner">Live Firebase / Google OAuth configuration is incomplete. Real login will not succeed until configured; use TEST MODE below for local development.</string>
+    <string name="auth_admin_denied_title">Admin Access Required</string>
+    <string name="auth_admin_denied_msg">This account (%1$s) does not have a verified Firebase admin role. Sign out to switch accounts or return to Delivery Partner mode.</string>
+
+    <!-- Development Test Mode -->
+    <string name="test_mode_title">TEST MODE (Development)</string>
+    <string name="test_mode_subtitle">Enter immediately as a demo delivery partner without Google Sign-In or OTP. All demo addresses are temporary local data and are not saved to Firebase.</string>
+    <string name="test_mode_button">Enter TEST MODE (Demo Partner)</string>
+    <string name="test_mode_banner">TEST MODE · Temporary Demo Data (Not Saved to Firebase)</string>
+    <string name="test_mode_badge">Temporary Demo Data</string>
+    <string name="test_mode_exit">Exit</string>
+    <string name="test_mode_logout_message">Your temporary demo addresses will be reset when you exit TEST MODE.</string>
+
+    <!-- Rider Onboarding / Profile Setup -->
+    <string name="onboarding_title">Complete Rider Profile</string>
+    <string name="onboarding_subtitle">Set up your individual delivery partner account to start saving customer addresses.</string>
+    <string name="field_full_name">Full Name</string>
+    <string name="field_mobile_number">Mobile Number</string>
+    <string name="field_vehicle_type">Vehicle Type</string>
+    <string name="field_delivery_zone">Primary Delivery Area / Zone</string>
+    <string name="btn_save_profile">Save &amp; Continue</string>
+    <string name="vehicle_bike">Bike</string>
+    <string name="vehicle_scooter">Scooter</string>
+    <string name="vehicle_van">Van</string>
+    <string name="vehicle_cycle">Cycle</string>
+    <string name="vehicle_other">Other</string>
+
+    <!-- Suspended State -->
+    <string name="suspended_title">Account Suspended</string>
+    <string name="suspended_message">Your delivery partner account has been paused by the administrator. Please contact your hub manager for reactivation.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_addresses">Addresses</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Home Dashboard -->
+    <string name="greeting_rider">Hello, %1$s</string>
+    <string name="rider_badge_active">Active Partner</string>
+    <string name="total_customers_label">Total Saved Customers</string>
+    <string name="recent_saves_label">Recently Saved Addresses</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="search_placeholder">Search by customer name or mobile…</string>
+    <string name="view_all">View All</string>
+    <string name="no_addresses_title">No Customer Addresses Yet</string>
+    <string name="no_addresses_subtitle">Save your regular delivery customers with landmarks and notes for one-tap Google Maps navigation.</string>
+    <string name="no_search_results">No matching customers found for \"%1$s\".</string>
+    <string name="clear_search">Clear</string>
+
+    <!-- Address Form -->
+    <string name="title_add_address">Add Customer Address</string>
+    <string name="title_edit_address">Edit Customer Address</string>
+    <string name="field_customer_name">Customer Name *</string>
+    <string name="field_customer_mobile">Customer Mobile Number *</string>
+    <string name="field_full_address">Full Address (House / Flat / Street) *</string>
+    <string name="field_area">Area / Locality *</string>
+    <string name="field_landmark">Nearby Landmark</string>
+    <string name="field_delivery_notes">Additional Delivery Notes</string>
+    <string name="btn_pin_gps">Attach Current GPS Location</string>
+    <string name="gps_pinned">GPS Coordinates Attached: %1$.4f, %2$.4f</string>
+    <string name="gps_permission_denied">Location permission denied. You can still save the address manually.</string>
+    <string name="btn_save_address">Save Address</string>
+    <string name="btn_update_address">Update Address</string>
+    <string name="validation_name">Customer name must be at least 2 characters.</string>
+    <string name="validation_mobile">Mobile number must be 8–20 characters.</string>
+    <string name="validation_address">Full address must be at least 5 characters.</string>
+    <string name="validation_area">Area / locality must be at least 2 characters.</string>
+
+    <!-- Address Detail & Actions -->
+    <string name="title_address_detail">Customer Details</string>
+    <string name="btn_navigate">Navigate</string>
+    <string name="btn_open_maps">Open in Maps</string>
+    <string name="btn_call">Call</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_delete">Delete</string>
+    <string name="delete_confirm_title">Delete Saved Address?</string>
+    <string name="delete_confirm_message">Remove %1$s from your private address book? This cannot be undone.</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="maps_not_found">Unable to open Google Maps or browser.</string>
+    <string name="private_lock_badge">Private to your account</string>
+
+    <!-- AdMob Banner & Rewarded -->
+    <string name="ad_label">Sponsored</string>
+    <string name="rewarded_card_title">Route Boost &amp; Delivery Tip</string>
+    <string name="rewarded_card_subtitle">Watch a short rewarded ad to unlock today\'s delivery efficiency bonus and support KYAATHI.</string>
+    <string name="btn_watch_rewarded">Watch Rewarded Ad</string>
+    <string name="reward_earned_msg">Bonus unlocked! Earned +%1$d %2$s.</string>
+    <string name="ad_loading_msg">Loading ad…</string>
+    <string name="ad_unavailable_msg">Ad is not ready right now. Try again shortly.</string>
+
+    <!-- Profile & Logout -->
+    <string name="profile_title">Partner Profile</string>
+    <string name="btn_edit_profile">Update Profile</string>
+    <string name="btn_logout">Logout</string>
+    <string name="logout_confirm_title">Logout of KYAATHI?</string>
+    <string name="logout_confirm_message">Your saved addresses stay safely synced to your private cloud account.</string>
+    <string name="profile_saved_toast">Profile updated successfully</string>
+
+    <!-- Admin Dashboard -->
+    <string name="admin_title">KYAATHI Admin</string>
+    <string name="admin_subtitle">Delivery Partner Management &amp; Stats</string>
+    <string name="admin_stat_total_riders">Total Riders</string>
+    <string name="admin_stat_active_riders">Active Riders</string>
+    <string name="admin_stat_suspended_riders">Suspended</string>
+    <string name="admin_stat_total_addresses">Saved Customers</string>
+    <string name="admin_tab_riders">Delivery Boys</string>
+    <string name="admin_tab_ads">AdMob Setup</string>
+    <string name="admin_no_riders">No delivery partners registered yet.</string>
+    <string name="admin_status_active">Active</string>
+    <string name="admin_status_suspended">Suspended</string>
+    <string name="admin_action_suspend">Suspend</string>
+    <string name="admin_action_activate">Activate</string>
+    <string name="admin_action_remove">Remove</string>
+    <string name="admin_admob_title">Google AdMob Configuration</string>
+    <string name="admin_admob_subtitle">Use Google test ad IDs during development, or switch to your live production AdMob Unit IDs.</string>
+    <string name="admin_use_test_ads">Use Development Test Ad IDs</string>
+    <string name="admin_banner_id_label">Production Banner Ad Unit ID</string>
+    <string name="admin_rewarded_id_label">Production Rewarded Ad Unit ID</string>
+    <string name="admin_save_admob">Save AdMob Settings</string>
+    <string name="admin_admob_saved">AdMob configuration saved</string>
+</resources>
